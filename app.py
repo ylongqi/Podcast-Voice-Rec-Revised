@@ -14,7 +14,7 @@ from flask_mail import Mail, Message
 
 from helpers import textToSpeech
 #from helpers import rss_parser
-
+import uuid
 
 #rss_parser()
 textToSpeech()
@@ -57,7 +57,7 @@ survey_result_file_name = 'survey_result'
 # global vars
 podcast_options = json.load(open(json_url))
 code = ""
-code_set = set()
+# code_set = set()
 lastRequestIsVoice = True
 session_ids = set()
 req_json=""
@@ -373,22 +373,22 @@ def get_table_columns(table):
 
 
 def codeGen():
-    import string
-    import random
+    # import string
+    # import random
 
-    global code_set
+    # global code_set
 
-    def genPwd():
-        chars=string.ascii_letters + string.digits
-        return ''.join(random.choice(chars) for _ in range(20))
+    # def genPwd():
+    #     chars=string.ascii_letters + string.digits
+    #     return ''.join(random.choice(chars) for _ in range(20))
     
-    pwd = genPwd()
+    # pwd = genPwd()
 
-    while pwd in code_set:
-        pwd = genPwd()
+    # while pwd in code_set:
+    #     pwd = genPwd()
     
-    code_set.add(pwd)
-    return pwd
+    # code_set.add(pwd)
+    return uuid.uuid4()
 
 
 if __name__ == "__main__":
